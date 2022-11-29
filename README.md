@@ -19,12 +19,39 @@ This is a queuing model in which the arrival is Marcovian and departure distribu
 
 
 ## Experiment:
+![pqms](https://user-images.githubusercontent.com/94165415/204595886-ca9e1ade-1bd5-420d-b3c3-e2df25b57076.png)
 
 
-## Program
+## Program :
+```
+arr_time=float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
+ser_time=float(input("Enter the mean  inter service time of Lathe Machine (in secs) :  "))
+Robot_time=float(input("Enter the Additional time taken for the Robot (in secs) :  "))
+lam=1/arr_time
+mu=1/(ser_time+Robot_time)
+print("--------------------------------------------------------------")
+print("Single Server with Infinite Capacity - (M/M/1):(oo/FIFO)")
+print("--------------------------------------------------------------")
+print("The mean arrival rate per second : %0.2f "%lam)
+print("The mean service rate per second : %0.2f "%mu)
+if (lam <  mu):
+    Ls=lam/(mu-lam)
+    Lq=Ls-lam/mu
+    Ws=Ls/lam
+    Wq=Lq/lam
+    print("Average number of objects in the system : %0.2f "%Ls)
+    print("Average number of objects in the conveyor :  %0.2f "%Lq)
+    print("Average waiting time of an object in the system : %0.2f secs"%Ws)
+    print("Average waiting time of an object in the conveyor : %0.2f secs"%Wq)
+    print("Probability that the system is busy : %0.2f "%(lam/mu) )
+    print("Probability that the system is empty : %0.2f "%(1-lam/mu) )
+else:
+    print("Warning! Objects Over flow will happen in the conveyor")
+print("---------------------------------------------------------------")
 
+```
 
 ## Output:
-![single server](https://user-images.githubusercontent.com/94165415/203698055-b67eeb36-6e51-445c-8ddc-0fc92e99b423.jpeg)
-
+![pqm1](https://user-images.githubusercontent.com/94165415/204595602-4b63194d-5a54-44af-abac-cc56281d13d4.png)
 ## Result:
+The average number of material in the sysytem and in the conveyor and waiting time are successfully found.
